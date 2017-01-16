@@ -48,8 +48,7 @@ var DownloadArticleService = {
 				callback(responseArray);
 			})
 			.catch(function(err) {
-				sails.log.error(err);
-				callback(err);
+				return err;
 			});
 		}
 };
