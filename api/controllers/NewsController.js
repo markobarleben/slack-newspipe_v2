@@ -48,7 +48,7 @@ module.exports = {
 
 					if (error) {
 						var errorMessage = ErrorService.errorMessageToUser();
-						return res.serverError(errorMessage)
+						return res.ok(errorMessage)
 						sails.log.info('--->>>>>>>   ' + error)
 					}
 
