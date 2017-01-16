@@ -12,7 +12,8 @@ module.exports = {
 
 	newsRequest: function(req, res) {
 
-		if (sails.config.slack.slack_token === req.body.token) {
+//sails.config.slack.slack_token
+		if (process.env.token === req.body.token) {
 
 			var timeStamp_start = Math.floor(Date.now());
 
