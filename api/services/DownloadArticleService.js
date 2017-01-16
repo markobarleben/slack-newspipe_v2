@@ -45,14 +45,11 @@ var DownloadArticleService = {
 				responseArray.push(articleResponse)
 				responseArray.push(sourceResponse)
 
-				if (articleResponse && sourceResponse) {
-					callback(responseArray);
-				} else {
-					callback('error')
-				}
+				callback(responseArray);
 			})
 			.catch(function(err) {
-				return err;
+
+				callback('error')
 			});
 	}
 };
