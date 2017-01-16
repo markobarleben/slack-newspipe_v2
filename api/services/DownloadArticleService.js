@@ -45,7 +45,7 @@ var DownloadArticleService = {
 				responseArray.push(articleResponse)
 				responseArray.push(sourceResponse)
 
-				if (responseArray) {
+				if (articleResponse && sourceResponse) {
 					callback(responseArray);
 				} else {
 					callback('error')
