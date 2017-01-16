@@ -1,6 +1,9 @@
 var request = require('request-promise');
 var Promise = require('bluebird');
 
+var newsAPI_config = sails.config.newsAPI;
+
+
 var DownloadArticleService = {
 
 	download: function(options, callback) {
@@ -16,7 +19,7 @@ var DownloadArticleService = {
 			method: 'GET',
 			url: articleUrl,
 			qs: {
-				apiKey: sails.config.newsApiKey.apiKey,
+				apiKey: newsAPI_config.apiKey,
 				source: requestString
 			}
 		});
@@ -26,7 +29,7 @@ var DownloadArticleService = {
 			method: 'GET',
 			url: sourceUrl,
 			qs: {
-				apiKey: sails.config.newsApiKey.apiKey
+				apiKey: newsAPI_config.apiKey
 			}
 		});
 

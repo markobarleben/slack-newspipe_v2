@@ -8,12 +8,13 @@
 var request = require('request');
 var counter = 0;
 
+var slack_config = sails.config.slack;
+
 module.exports = {
 
 	newsRequest: function(req, res) {
 
-//sails.config.slack.slack_token
-		if (process.env.token === req.body.token) {
+		if ( slack_config.slack_token === req.body.token) {
 
 			var timeStamp_start = Math.floor(Date.now());
 

@@ -6,13 +6,14 @@
  */
 
 var request = require('request');
+var slack_config = sails.config.slack;
 
 module.exports = {
 
 	auth: function(req, res) {
 
-		var SlackclientId = sails.config.slack.clientId;
-		var SlackclientSecret = sails.config.slack.clientSecret;
+		var SlackclientId = slack_config.clientId;
+		var SlackclientSecret = slack_config.clientSecret;
 		var qs = {
 			code: req.query.code,
 			client_id: SlackclientId,
