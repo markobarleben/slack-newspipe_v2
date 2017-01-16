@@ -46,18 +46,10 @@ module.exports = {
 
 				}, function(articles, error) {
 
-					if (error) {
-						var errorMessage = ErrorService.errorMessageToUser();
-						return res.ok(errorMessage)
-						sails.log.info('--->>>>>>>   ' + error)
-					}
-
 					if (articles === 'error'){
 						var errorMessage = ErrorService.errorMessageToUser();
 						return res.ok(errorMessage)
 					}
-
-					sails.log('error --->>>>   ' + articles)
 
 					var responseArticle = articles[0]
 					var responseSource = articles[1]
