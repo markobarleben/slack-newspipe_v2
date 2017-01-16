@@ -57,6 +57,8 @@ module.exports = {
 						return res.ok(errorMessage)
 					}
 
+					sails.log('error --->>>>   ' + articles)
+
 					var responseArticle = articles[0]
 					var responseSource = articles[1]
 
