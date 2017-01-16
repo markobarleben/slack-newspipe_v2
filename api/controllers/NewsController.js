@@ -48,7 +48,7 @@ module.exports = {
 
 					if (error) {
 						var errorMessage = ErrorService.errorMessageToUser();
-						return res.ok(errorMessage)
+						return res.serverError(errorMessage)
 						sails.log.info('--->>>>>>>   ' + error)
 					}
 
@@ -64,7 +64,7 @@ module.exports = {
 						})
 					} else {
 						var errorMessage = ErrorService.errorMessageToUser();
-						res.serverError(errorMessage)
+						return res.serverError(errorMessage)
 					}
 
 					if (articleQuery && responseSource) {
