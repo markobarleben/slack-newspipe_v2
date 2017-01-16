@@ -33,7 +33,7 @@ module.exports = {
 				articleSource = articleSource.trim();
 			}
 
-			if (articleSource === 'help' || articleSource === null) {
+			if (articleSource === 'help' || articleSource === null || articleSource == "") {
 				var sendHelpMessage = HelpService.answerToUser({
 					helpMessageFromUser: articleSource
 				});
@@ -50,6 +50,11 @@ module.exports = {
 						var errorMessage = ErrorService.errorMessageToUser();
 						return res.ok(errorMessage)
 						sails.log.info('--->>>>>>>   ' + error)
+					}
+
+					if (articles === 'error'){
+						var errorMessage = ErrorService.errorMessageToUser();
+						return res.ok(errorMessage)
 					}
 
 					var responseArticle = articles[0]

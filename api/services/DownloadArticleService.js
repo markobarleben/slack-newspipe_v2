@@ -45,12 +45,16 @@ var DownloadArticleService = {
 				responseArray.push(articleResponse)
 				responseArray.push(sourceResponse)
 
-				callback(responseArray);
+				if (responseArray) {
+					callback(responseArray);
+				} else {
+					callback('error')
+				}
 			})
 			.catch(function(err) {
 				return err;
 			});
-		}
+	}
 };
 
 module.exports = DownloadArticleService;
