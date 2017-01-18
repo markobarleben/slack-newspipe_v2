@@ -21,11 +21,7 @@ module.exports = {
 		}
 
 		if (!req.query.code) {
-			res.badRequest();
-			res.send({
-				text: "Error: access denied"
-			});
-
+			res.redirect('https://github.com/markobarleben/slack-newspipe/blob/master/README.md');
 			return;
 		}
 
@@ -48,8 +44,7 @@ module.exports = {
 							res.send('newspipe has been added to your team!');
 						} else {
 							//tweak the slack button befor --> commands+team%3Aread
-							let team = JSON.parse(body).team_name
-
+							let team = JSON.parse(body).team.domain;
 							res.redirect('http://' + team + '.slack.com');
 						}
 					}

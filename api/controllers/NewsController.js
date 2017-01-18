@@ -14,7 +14,7 @@ module.exports = {
 
 	newsRequest: function(req, res) {
 
-		if ( slack_config.slack_token === req.body.token) {
+		if (slack_config.slack_token === req.body.token) {
 
 			var timeStamp_start = Math.floor(Date.now());
 
@@ -22,9 +22,10 @@ module.exports = {
 				counter = 0
 			};
 
-			var slackUsername = req.body.user_name;
 			var articleSource = req.body.text;
 			var responseUrl = req.body.response_url;
+
+
 
 			articleSource = articleSource.toLowerCase()
 
@@ -33,7 +34,9 @@ module.exports = {
 				articleSource = articleSource.trim();
 			}
 
-			if (articleSource === 'help' || articleSource === null || articleSource == "") {
+			sails.log(articleSource)
+
+			if (articleSource === 'help' || articleSource === " ") {
 				var sendHelpMessage = HelpService.answerToUser({
 					helpMessageFromUser: articleSource
 				});
@@ -46,7 +49,7 @@ module.exports = {
 
 				}, function(articles, error) {
 
-					if (articles === 'error'){
+					if (articles === 'error') {
 						var errorMessage = ErrorService.errorMessageToUser();
 						return res.ok(errorMessage)
 					}
@@ -73,38 +76,7 @@ module.exports = {
 							responseSource: responseSource
 						})
 					}
-					var timeStamp_End = 0;
-					var time_result = 0;
-
-					time_result = (timeStamp_end = Math.floor(Date.now()) - timeStamp_start)
-					sails.log('time_result -->>>>> ' + time_result)
-
-
-					// after 2500 msec put article to response_url - but not the best solution 
-					if (time_result < 2500) {
-						return res.ok(article)
-					} else {
-						request({
-							url: responseUrl, //URL to hit
-							headers: {
-								"content-type": "application/json",
-							},
-							body: article,
-							method: 'POST',
-							json: true
-						}, function(error, response, body) {
-							if (error) {
-								console.log(error);
-							} else {
-								sails.log(body)
-								res.ok(body);
-								sails.log(time_result)
-							}
-						})
-						return res.json({
-							text: 'message is comming :)'
-						});
-					}
+					return res.ok(article)
 				})
 			}
 		} else {
@@ -119,7 +91,6 @@ module.exports = {
 
 		counter++;
 
-		var timeStamp_start = Math.floor(Date.now());
 		var valueNextButton = req.body.payload
 		var responseUrl = req.body.payload
 		responseUrl = JSON.parse(responseUrl)
@@ -168,44 +139,8 @@ module.exports = {
 					articleQuery: articleQuery,
 					responseSource: responseSource
 				})
-			} else {
-				sails,
-				log('error')
-			}
-
-			var timeStamp_End = 0;
-			var time_result = 0;
-
-			time_result = (timeStamp_end = Math.floor(Date.now()) - timeStamp_start)
-			sails.log('time_result -->>>>> ' + time_result)
-
-
-			// after 2500 msec take article to response_url - but not the best solution
-			if (time_result < 2500) {
-				return res.ok(article)
-			} else {
-				request({
-					url: responseUrl, //URL to hit
-					headers: {
-						'content-type': 'application/json',
-					},
-					body: article,
-					method: 'POST',
-					json: true
-				}, function(error, response, body) {
-					if (error) {
-						console.log(error);
-					} else {
-						res.json(body)
-						sails.log(body)
-						sails.log(time_result)
-					}
-				})
-				return res.json({
-					text: 'message is comming :)'
-				});
-			}
-
+			} 
+			return res.ok(article)
 		})
 
 	}
