@@ -86,7 +86,7 @@ var ArticleService = {
 						style: 'primary'
 					}],
 
-					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from newspipe',
+					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
 				}
 
 			]
