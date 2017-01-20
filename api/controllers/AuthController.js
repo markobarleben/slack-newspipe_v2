@@ -43,9 +43,11 @@ module.exports = {
 
 							res.send('newspipe has been added to your team!');
 						} else {
-							//tweak the slack button befor --> commands+team%3Aread
-							let team = JSON.parse(body).team.domain;
-							res.redirect('http://' + team + '.slack.com');
+
+							res.send('slack-newspipe ss already added by your team! Thank you - You are awesome!!')
+							//rejected by slack team  -> After the app is installed, could you direct users to a page that indicates installation was successful rather than to their Slack team?
+							//let team = JSON.parse(body).team.domain;
+							//res.redirect('http://' + team + '.slack.com');
 						}
 					}
 				})
