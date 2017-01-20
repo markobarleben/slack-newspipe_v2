@@ -41,7 +41,7 @@ module.exports = {
 					if (!error && response.statusCode == 200) {
 						if (JSON.parse(body).error == 'missing_scope') {
 
-							res.send('newspipe has been added to your team!');
+							res.send('newspipe has been added to your team! THANK U!!!! ');
 						} else {
 
 							res.send('slack-newspipe is already added by your team! THANK YOU _ U ARE AWESOME!!!!!!')
