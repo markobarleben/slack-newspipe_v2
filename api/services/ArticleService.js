@@ -40,7 +40,6 @@ var ArticleService = {
 	buildArticleMessageForSlack: function(options) {
 
 		// create a json to send this in slack
-		// generate a 
 
 		var articleQuery = options.articleQuery
 		var source = options.responseSource

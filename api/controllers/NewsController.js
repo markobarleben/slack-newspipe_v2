@@ -139,7 +139,7 @@ module.exports = {
 					articleQuery: articleQuery,
 					responseSource: responseSource
 				})
-			} 
+			}
 			return res.ok(article)
 		})
 
