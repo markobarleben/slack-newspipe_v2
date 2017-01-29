@@ -37,20 +37,21 @@ var ErrorService = {
 
 					sails.log(resultAlternativeSource)
 
+					var errorMessage = {
+
+						text: 'Someting is wrong here! No Article found ' + ':cry: \n ' +
+							'Type ' + '`/newspipe help` for more informations \n ' +
+							' `or is that what you mean maybe` \n ',
+
+						attachments: [{
+							fallback: "Message is coming soon",
+							color: '#f9f9f9',
+							text: resultAlternativeSource
+						}]
+					};
+
+
 				}
-				var errorMessage = {
-
-					text: 'Someting is wrong here! No Article found ' + ':cry: \n ' +
-						'Type ' + '`/newspipe help` for more informations \n ' +
-						' `or is that what you mean maybe` \n ',
-
-					attachments: [{
-						fallback: "Message is coming soon",
-						color: '#f9f9f9',
-						text: resultAlternativeSource
-					}]
-				};
-
 				callback(errorMessage)
 
 			} else {
