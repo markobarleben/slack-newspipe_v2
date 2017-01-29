@@ -35,24 +35,26 @@ var ErrorService = {
 				var result = fuse.search(falseStringFromUser)
 
 				for (var i = 0; i < result.length; i++) {
-					
+
 					resultId = result[i].id
 
-					sails.log(resultId)
 				}
 			}
 
 		})
 
+			sails.log(resultId)
+
 		var errorMessage = {
+
 			text: 'Someting is wrong here! No Article found ' + ':cry: \n ' +
 				'Type ' + '`/newspipe help` for more informations \n ' +
-				' or ist that what you mean mabye ',
+				' or ist that what you mean maybe ',
 
 				attachments: [{
 				fallback: "Message is coming soon",
 				color: '#f9f9f9',
-				text: '`' +resultId + '`'
+				text: resultId
 			}]
 		};
 
