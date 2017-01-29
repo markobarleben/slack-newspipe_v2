@@ -9,7 +9,9 @@ var ErrorService = {
 
 		var sourceUrl = 'https://newsapi.org/v1/sources';
 
-		var falseStringFromUser = options.falseStringFromUser
+		var falseStringFromUser = options.falseStringFromUser;
+
+		var resultId = " ";
 
 
 		request.get({
@@ -33,7 +35,9 @@ var ErrorService = {
 				var result = fuse.search(falseStringFromUser)
 
 				for (var i = 0; i < result.length; i++) {
-					var resultId = result[i].id
+					
+					resultId = result[i].id
+
 					sails.log(resultId)
 				}
 			}
