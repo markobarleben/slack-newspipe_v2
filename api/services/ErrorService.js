@@ -3,16 +3,13 @@ var request = require('request');
 
 var ErrorService = {
 
-	errorMessageToUser: function(options) {
+	errorMessageToUser: function(options, callback) {
 
 		var newsAPI_config = sails.config.newsAPI;
 
 		var sourceUrl = 'https://newsapi.org/v1/sources';
 
 		var falseStringFromUser = options.falseStringFromUser;
-
-		var resultId = " ";
-
 
 		request.get({
 			json: true,
@@ -36,29 +33,28 @@ var ErrorService = {
 
 				for (var i = 0; i < result.length; i++) {
 
-					resultId = result[i].id
+					var resultAlternativeSource = result[i].id
 
 				}
+				var errorMessage = {
+
+					text: 'Someting is wrong here! No Article found ' + ':cry: \n ' +
+						'Type ' + '`/newspipe help` for more informations \n ' +
+						' `or is that what you mean maybe` \n ',
+
+					attachments: [{
+						fallback: "Message is coming soon",
+						color: '#f9f9f9',
+						text: resultAlternativeSource
+					}]
+				};
+
+				callback(errorMessage)
+			} else {
+
+				sails.log(error)
 			}
-
 		})
-
-			sails.log(resultId)
-
-		var errorMessage = {
-
-			text: 'Someting is wrong here! No Article found ' + ':cry: \n ' +
-				'Type ' + '`/newspipe help` for more informations \n ' +
-				' or ist that what you mean maybe ',
-
-				attachments: [{
-				fallback: "Message is coming soon",
-				color: '#f9f9f9',
-				text: resultId
-			}]
-		};
-
-		return errorMessage;
 	}
 };
 

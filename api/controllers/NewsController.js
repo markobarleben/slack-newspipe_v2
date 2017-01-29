@@ -52,8 +52,9 @@ module.exports = {
 					if (articles === 'error') {
 						var errorMessage = ErrorService.errorMessageToUser({
 							falseStringFromUser: articleSource
+						}, function(errorMessage, error) {
+							return res.ok(errorMessage)
 						});
-						return res.ok(errorMessage)
 					}
 
 					var responseArticle = articles[0]
