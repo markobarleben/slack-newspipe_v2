@@ -35,7 +35,7 @@ var ErrorService = {
 
 				for (var i = 0; i < result.length; i++) {
 
-					resultAlternativeSource.push(result[i].id ' ') 
+					resultAlternativeSource.push(result[i].id) 
 
 					sails.log(resultAlternativeSource)
 
@@ -47,7 +47,7 @@ var ErrorService = {
 						attachments: [{
 							fallback: "Message is coming soon",
 							color: '#f9f9f9',
-							text: ':telescope: Perhaps you may mean  \n' + resultAlternativeSource.toString()
+							text: ':telescope: Perhaps you may mean  \n' + resultAlternativeSource.join( ' :point_right: ')
 						}]
 					};
 
