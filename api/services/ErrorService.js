@@ -48,7 +48,7 @@ var ErrorService = {
 						attachments: [{
 							fallback: "Message is coming soon",
 							color: '#f9f9f9',
-							text: resultAlternativeSource.toString();
+							text: resultAlternativeSource.toString()
 						}]
 					};
 
