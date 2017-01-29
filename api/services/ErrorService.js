@@ -35,7 +35,7 @@ var ErrorService = {
 
 				for (var i = 0; i < result.length; i++) {
 
-					resultAlternativeSource.push(result[i].id, ' ') 
+					resultAlternativeSource.push(result[i].id ' ') 
 
 					sails.log(resultAlternativeSource)
 
