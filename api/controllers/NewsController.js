@@ -55,6 +55,8 @@ module.exports = {
 						}, function(errorMessage, error) {
 							return res.ok(errorMessage)
 						});
+
+						return;
 					}
 
 					var responseArticle = articles[0]

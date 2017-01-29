@@ -35,6 +35,8 @@ var ErrorService = {
 
 					var resultAlternativeSource = result[i].id
 
+					sails.log(resultAlternativeSource)
+
 				}
 				var errorMessage = {
 
@@ -50,6 +52,7 @@ var ErrorService = {
 				};
 
 				callback(errorMessage)
+
 			} else {
 
 				sails.log(error)
