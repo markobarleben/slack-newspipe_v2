@@ -27,7 +27,9 @@ var ErrorService = {
 			if (!error && response.statusCode == 200) {
 
 				var options = {
-					keys: ['id'],
+					tokenize: true,
+  					findAllMatches: true,
+					keys: ['id']
 				};
 
 				var fuse = new Fuse(sources, options)
