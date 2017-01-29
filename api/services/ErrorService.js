@@ -11,6 +11,8 @@ var ErrorService = {
 
 		var falseStringFromUser = options.falseStringFromUser;
 
+		var resultAlternativeSource = []
+
 		request.get({
 			json: true,
 			url: sourceUrl,
@@ -33,7 +35,7 @@ var ErrorService = {
 
 				for (var i = 0; i < result.length; i++) {
 
-					var resultAlternativeSource = result[i].id
+					resultAlternativeSource.push(result[i].id) 
 
 					sails.log(resultAlternativeSource)
 
@@ -46,13 +48,13 @@ var ErrorService = {
 						attachments: [{
 							fallback: "Message is coming soon",
 							color: '#f9f9f9',
-							text: result[i].id
+							text: resultAlternativeSource
 						}]
 					};
 
 
 				}
-				
+
 				callback(errorMessage)
 
 			} else {
