@@ -48,8 +48,8 @@ var ErrorService = {
 						attachments: [{
 							fallback: "Message is coming soon",
 							color: '#f9f9f9',
-							text: ':telescope: Perhaps you may mean  \n  :point_right: ' + resultAlternativeSource.join(' :point_right:  \n ' +
-								' or type ' + '`/newspipe help` for more informations ')
+							text: ':telescope: Perhaps you may mean \n :point_right: ' + resultAlternativeSource.join(' :point_right:') +
+								'\n or type ' + '`/newspipe help` for more informations '
 						}]
 					};
 				}
