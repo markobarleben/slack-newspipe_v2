@@ -49,7 +49,7 @@ var ErrorService = {
 							fallback: "Message is coming soon",
 							color: '#f9f9f9',
 							text: ':telescope: Perhaps you may mean \n :point_right: ' + resultAlternativeSource.join(' :point_right:') +
-								'\n or type ' + '`/newspipe help` for more informations '
+								'\n or type :raised_hands: /newspipe help :raised_hands: for more informations '
 						}]
 					};
 				}
