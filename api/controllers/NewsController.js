@@ -30,7 +30,7 @@ module.exports = {
 			articleSource = articleSource.toLowerCase()
 
 			// check if string empty
-			if (articleSource === ' '){
+			if (articleSource === ' ' || articleSource === '' || articleSource === null ){
 				articleSource == 'help'
 			}
 
