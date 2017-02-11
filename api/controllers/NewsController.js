@@ -30,9 +30,15 @@ module.exports = {
 			articleSource = articleSource.toLowerCase()
 
 			// check if string empty
-			if (articleSource === ' ' || articleSource === '' || articleSource === null || !articleSource || !articleSource.length){
-				articleSource == 'help'
+			//if (articleSource === ' ' || articleSource === '' || articleSource === null || !articleSource || !articleSource.length){
+				//articleSource == 'help'
+			//}
+
+			if (!!articleSource || /^\s*$/.test(articleSource)){
+				articleSource === 'help'
 			}
+
+
 
 			// find whitespaces and delete them
 			if (/\s/g.test(articleSource)) {
