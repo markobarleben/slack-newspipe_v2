@@ -34,11 +34,9 @@ module.exports = {
 				//articleSource == 'help'
 			//}
 
-			if (!!articleSource || /^\s*$/.test(articleSource)){
+			if (!!articleSource || /^\s*$/.test(articleSource) || !req.body.text){
 				articleSource === 'help'
 			}
-
-
 
 			// find whitespaces and delete them
 			if (/\s/g.test(articleSource)) {
