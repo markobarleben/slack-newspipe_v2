@@ -45,8 +45,7 @@ module.exports = {
 			} else {
 
 				DownloadArticleService.download({
-					articleSource: articleSource,
-					responseUrl: responseUrl
+					articleSource: articleSource
 
 				}, function(articles, error) {
 
