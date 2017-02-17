@@ -35,7 +35,7 @@ module.exports = {
 			//}
 
 			if (!!articleSource || /^\s*$/.test(articleSource) || !!articleSource == null){
-				articleSource === 'help'
+				articleSource = 'help'
 			}
 
 			// find whitespaces and delete them
