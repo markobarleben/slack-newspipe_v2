@@ -9,7 +9,6 @@ var DownloadArticleService = {
 	download: function(options, callback) {
 
 		var requestString = options.articleSource;
-		var response_url = options.responseUrl;
 
 		var sourceUrl = 'https://newsapi.org/v1/sources';
 		var articleUrl = 'https://newsapi.org/v1/articles?';

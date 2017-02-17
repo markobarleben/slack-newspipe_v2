@@ -23,16 +23,8 @@ module.exports = {
 			};
 
 			var articleSource = req.body.text;
-			var responseUrl = req.body.response_url;
-
-
 
 			articleSource = articleSource.toLowerCase()
-
-			// check if string empty
-			//if (articleSource === ' ' || articleSource === '' || articleSource === null || !articleSource || !articleSource.length){
-				//articleSource == 'help'
-			//}
 
 			if (!!articleSource || /^\s*$/.test(articleSource)){
 				articleSource = 'help'
@@ -106,17 +98,12 @@ module.exports = {
 		counter++;
 
 		var valueNextButton = req.body.payload
-		var responseUrl = req.body.payload
-		responseUrl = JSON.parse(responseUrl)
-		responseUrl = responseUrl.response_url
-
 		valueNextButton = JSON.parse(valueNextButton)
 
 		var articleNameNextButton = valueNextButton.actions.shift().value
 
 		DownloadArticleService.download({
-			articleSource: articleNameNextButton,
-			responseUrl: responseUrl
+			articleSource: articleNameNextButton
 		}, function(articles, error) {
 
 			if (error) {

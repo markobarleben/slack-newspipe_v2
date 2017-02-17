@@ -39,8 +39,6 @@ var ArticleService = {
 
 	buildArticleMessageForSlack: function(options) {
 
-		// create a json to send this in slack
-
 		var articleQuery = options.articleQuery
 		var source = options.responseSource
 
@@ -54,6 +52,7 @@ var ArticleService = {
 
 		var randomSource = alternativeSource[Math.floor(alternativeSource.length * Math.random())]
 
+		// build message for user
 		var articleForUser = {
 
 			response_type: "ephemeral",
