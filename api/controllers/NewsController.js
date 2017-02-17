@@ -34,7 +34,7 @@ module.exports = {
 				//articleSource == 'help'
 			//}
 
-			if (!!articleSource || /^\s*$/.test(articleSource) || !!articleSource == null){
+			if (!!articleSource || /^\s*$/.test(articleSource)){
 				articleSource = 'help'
 			}
 
