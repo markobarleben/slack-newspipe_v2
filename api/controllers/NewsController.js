@@ -34,7 +34,7 @@ module.exports = {
 
 			sails.log(articleSource)
 
-			if (articleSource === 'help' || !!articleSource) {
+			if (articleSource === 'help') {
 				var sendHelpMessage = HelpService.answerToUser({
 					helpMessageFromUser: articleSource
 				});
