@@ -22,12 +22,12 @@ module.exports = {
 
 			var articleSource = req.body.text;
 
-			if(!!articleSource){
-				articleSource = 'help'
-			}
-
 			articleSource = articleSource.toLowerCase()
 
+
+			if(!articleSource){
+				articleSource = 'help'
+			}
 
 			// find whitespaces and delete them
 			if (/\s/g.test(articleSource)) {
