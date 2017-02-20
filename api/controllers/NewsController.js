@@ -26,9 +26,6 @@ module.exports = {
 
 			articleSource = articleSource.toLowerCase()
 
-			if (!!articleSource || /^\s*$/.test(articleSource)){
-				articleSource = 'help'
-			}
 
 			// find whitespaces and delete them
 			if (/\s/g.test(articleSource)) {
@@ -37,7 +34,7 @@ module.exports = {
 
 			sails.log(articleSource)
 
-			if (articleSource === 'help') {
+			if (articleSource === 'help' || !!articleSource) {
 				var sendHelpMessage = HelpService.answerToUser({
 					helpMessageFromUser: articleSource
 				});
