@@ -24,6 +24,11 @@ module.exports = {
 
 			articleSource = articleSource.toLowerCase()
 
+			//handle empty request string coming from slack
+			if(!articleSource){
+				articleSource = 'help'
+			}
+
 			// find whitespaces and delete them
 			if (/\s/g.test(articleSource)) {
 				articleSource = articleSource.trim();
@@ -31,7 +36,7 @@ module.exports = {
 
 			sails.log(articleSource)
 
-			if (!articleSource || articleSource === 'help') {
+			if (articleSource === 'help') {
 				var sendHelpMessage = HelpService.answerToUser({
 					helpMessageFromUser: articleSource
 				});
