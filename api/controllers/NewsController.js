@@ -16,13 +16,15 @@ module.exports = {
 
 		if (slack_config.slack_token === req.body.token) {
 
-			var timeStamp_start = Math.floor(Date.now());
-
 			if (counter > 0) {
 				counter = 0
 			};
 
 			var articleSource = req.body.text;
+
+			if(!!articleSource){
+				articleSource = 'help'
+			}
 
 			articleSource = articleSource.toLowerCase()
 
