@@ -8,8 +8,6 @@ var DownloadArticleService = {
 
 	download: function(options, callback) {
 
-		sails.log('download download')
-
 		var requestString = options.articleSource;
 
 		var sourceUrl = 'https://newsapi.org/v1/sources';
