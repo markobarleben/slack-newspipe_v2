@@ -42,6 +42,7 @@ var DownloadArticleService = {
 
 					if (sortbyArticle) {
 
+						var source = {}
 						source.sort = sortbyArticle.find(checkSortbyArticle)
 
 						if (!source.sort) {
