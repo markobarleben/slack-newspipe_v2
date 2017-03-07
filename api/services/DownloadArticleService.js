@@ -35,6 +35,8 @@ var DownloadArticleService = {
 						}
 					}
 
+					var source = {}
+
 					function checkSortbyArticle(sort) {
 
 						if (sortbyArticle.indexOf('latest') == -1) {
