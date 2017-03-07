@@ -104,7 +104,7 @@ module.exports = {
 			articleSource: articleNameNextButton
 		}, function(articles, error) {
 
-			if (error) {
+			if (articles ==='error') {
 				var errorMessage = ErrorService.errorMessageToUser();
 				return res.serverError(errorMessage)
 				sails.log.info(error)

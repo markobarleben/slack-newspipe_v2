@@ -37,21 +37,16 @@ var DownloadArticleService = {
 
 					function checkSortbyArticle(sort) {
 
-						return sort === 'latest'
-					}
-
-					var source = {}
-
-					if (sortbyArticle) {
-
-						source.sort = sortbyArticle.find(checkSortbyArticle)
-
-						if (!source.sort) {
-							source.sort === 'top'
+						if (sortbyArticle.indexOf('latest') == -1) {
+							return source.sort = 'top'
+						} else {
+							return source.sort = 'latest'
 						}
 					}
 
-					if (source.sort !== 'undefined') {
+					source.sort = checkSortbyArticle(sortbyArticle)
+
+					if (source.sort) {
 
 						resolve(source.sort)
 					} else {
@@ -64,8 +59,9 @@ var DownloadArticleService = {
 
 			})
 		}).catch(function(err) {
-			callback('error')
+			sails.log('error')
 		})
+
 		promise.then(function(val) {
 
 			const articleUrl = 'https://newsapi.org/v1/articles';
