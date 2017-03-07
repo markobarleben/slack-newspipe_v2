@@ -26,27 +26,38 @@ var DownloadArticleService = {
 				}
 			}, function(error, response, body) {
 
-				sourceResponse = body.sources
+			if (!error && response.statusCode == 200) {
 
-				for (var i = 0; i < sourceResponse.length; i++) {
-					if (sourceResponse[i].id === requestString) {
-						var sortbyArticle = sourceResponse[i].sortBysAvailable
+					sourceResponse = body.sources
+
+					for (var i = 0; i < sourceResponse.length; i++) {
+						if (sourceResponse[i].id === requestString) {
+							var sortbyArticle = sourceResponse[i].sortBysAvailable
+						}
 					}
+
+					function checkSortbyArticle(sort) {
+
+						return sort === 'latest'
+					}
+
+					if (sortbyArticle) {
+
+						source.sort = sortbyArticle.find(checkSortbyArticle)
+
+					} else {
+						callback('error')
+					}
+
+					if (!source.sort) {
+						source.sort === 'top'
+					}
+
+					resolve(source.sort)
+
+				} else {
+					callback('error')
 				}
-
-				function checkSortbyArticle(sort) {
-
-					return sort === 'latest'
-				}
-
-				var source = {}
-				source.sort = sortbyArticle.find(checkSortbyArticle)
-
-				if (!source.sort) {
-					source.sort === 'top'
-				}
-
-				resolve(source.sort)
 
 			})
 		})
