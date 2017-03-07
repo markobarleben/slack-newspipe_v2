@@ -1,5 +1,5 @@
-var request = require('request-promise');
-var Promise = require('bluebird');
+var request = require('request');
+
 
 var newsAPI_config = sails.config.newsAPI;
 
@@ -10,15 +10,91 @@ var DownloadArticleService = {
 
 		var requestString = options.articleSource;
 
-		var sourceUrl = 'https://newsapi.org/v1/sources';
-		var articleUrl = 'https://newsapi.org/v1/articles?';
+		var sourceResponse = []
 
+
+		var promise = new Promise(function(resolve, reject) {
+
+			const sourceUrl = 'https://newsapi.org/v1/sources';
+
+			request({
+				json: true,
+				method: 'GET',
+				url: sourceUrl,
+				qs: {
+					apiKey: newsAPI_config.apiKey
+				}
+			}, function(error, response, body) {
+
+				sourceResponse = body.sources
+
+				for (var i = 0; i < sourceResponse.length; i++) {
+					if (sourceResponse[i].id === requestString) {
+						var sortbyArticle = sourceResponse[i].sortBysAvailable
+					}
+				}
+
+				function checkSortbyArticle(sort) {
+
+					return sort === 'latest'
+				}
+
+				var source = {}
+				source.sort = sortbyArticle.find(checkSortbyArticle)
+
+				if (!source.sort) {
+					source.sort === 'top'
+				}
+
+				resolve(source.sort)
+
+			})
+		})
+
+		promise.then(function(val) {
+
+			const articleUrl = 'https://newsapi.org/v1/articles';
+
+			request({
+				json: true,
+				method: 'GET',
+				url: articleUrl,
+				qs: {
+					apiKey: newsAPI_config.apiKey,
+					source: requestString,
+					sortBy: val
+				}
+
+			}, function(error, responds, body) {
+
+				var responseArray = [];
+
+				var articleResponse = body.articles
+
+				responseArray.push(articleResponse)
+				responseArray.push(sourceResponse)
+
+				callback(responseArray);
+
+			})
+		}).catch(function(err) {
+
+			callback('error')
+		});
+
+	}
+};
+
+module.exports = DownloadArticleService;
+
+
+/*
 		var articleRequest = request({
 			json: true,
 			method: 'GET',
 			url: articleUrl,
 			qs: {
-				apiKey: newsAPI_config.apiKey,
+				apiKey: '921b772763c34336addecdaf801b1d90',
 				source: requestString
 			}
 		});
@@ -28,7 +104,7 @@ var DownloadArticleService = {
 			method: 'GET',
 			url: sourceUrl,
 			qs: {
-				apiKey: newsAPI_config.apiKey
+				apiKey: '921b772763c34336addecdaf801b1d90'
 			}
 		});
 
@@ -50,7 +126,5 @@ var DownloadArticleService = {
 
 				callback('error')
 			});
-	}
-};
 
-module.exports = DownloadArticleService;
+*/
