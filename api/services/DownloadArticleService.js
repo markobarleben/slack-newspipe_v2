@@ -40,29 +40,32 @@ var DownloadArticleService = {
 						return sort === 'latest'
 					}
 
+					var source = {}
+
 					if (sortbyArticle) {
 
-						var source = {}
 						source.sort = sortbyArticle.find(checkSortbyArticle)
 
 						if (!source.sort) {
 							source.sort === 'top'
 						}
-
-					} else {
-						reject('err')
 					}
 
-					resolve(source.sort)
+					if (source.sort !== 'undefined') {
+
+						resolve(source.sort)
+					} else {
+						reject();
+					}
 
 				} else {
-					reject('err')
+					reject()
 				}
+
 			})
 		}).catch(function(err) {
 			callback('error')
 		})
-
 		promise.then(function(val) {
 
 			const articleUrl = 'https://newsapi.org/v1/articles';
