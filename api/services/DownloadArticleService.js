@@ -11,7 +11,7 @@ var DownloadArticleService = {
 		var requestString = options.articleSource;
 
 		var sourceResponse = []
-	
+
 		var promise = new Promise(function(resolve, reject) {
 
 			const sourceUrl = 'https://newsapi.org/v1/sources';
@@ -25,7 +25,7 @@ var DownloadArticleService = {
 				}
 			}, function(error, response, body) {
 
-			if (!error && response.statusCode == 200) {
+				if (!error && response.statusCode == 200) {
 
 					sourceResponse = body.sources
 
@@ -42,52 +42,56 @@ var DownloadArticleService = {
 
 					if (sortbyArticle) {
 
-						var source = {}
 						source.sort = sortbyArticle.find(checkSortbyArticle)
 
-					} else {
-						callback('error')
-					}
+						if (!source.sort) {
+							source.sort === 'top'
+						}
 
-					if (!source.sort) {
-						source.sort === 'top'
+					} else {
+						reject('err')
 					}
 
 					resolve(source.sort)
 
 				} else {
-					callback('error')
+					reject('err')
 				}
-
 			})
+		}).catch(function(err) {
+			callback('error')
 		})
 
 		promise.then(function(val) {
 
 			const articleUrl = 'https://newsapi.org/v1/articles';
 
-			request({
-				json: true,
-				method: 'GET',
-				url: articleUrl,
-				qs: {
-					apiKey: newsAPI_config.apiKey,
-					source: requestString,
-					sortBy: val
-				}
+			if (!val) {
+				reject('err')
+			} else {
 
-			}, function(error, responds, body) {
+				request({
+					json: true,
+					method: 'GET',
+					url: articleUrl,
+					qs: {
+						apiKey: newsAPI_config.apiKey,
+						source: requestString,
+						sortBy: val
+					}
 
-				var responseArray = [];
+				}, function(error, responds, body) {
 
-				var articleResponse = body.articles
+					var responseArray = [];
 
-				responseArray.push(articleResponse)
-				responseArray.push(sourceResponse)
+					var articleResponse = body.articles
 
-				callback(responseArray);
+					responseArray.push(articleResponse)
+					responseArray.push(sourceResponse)
 
-			})
+					callback(responseArray);
+				})
+			}
 		}).catch(function(err) {
 
 			callback('error')
