@@ -11,8 +11,7 @@ var DownloadArticleService = {
 		var requestString = options.articleSource;
 
 		var sourceResponse = []
-
-
+	
 		var promise = new Promise(function(resolve, reject) {
 
 			const sourceUrl = 'https://newsapi.org/v1/sources';
@@ -43,6 +42,7 @@ var DownloadArticleService = {
 
 					if (sortbyArticle) {
 
+						var source = {}
 						source.sort = sortbyArticle.find(checkSortbyArticle)
 
 					} else {
