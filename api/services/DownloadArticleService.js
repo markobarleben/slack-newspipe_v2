@@ -46,12 +46,23 @@ var DownloadArticleService = {
 						}
 					}
 
-					source.sort = checkSortbyArticle(sortbyArticle)
+					if (!sortbyArticle) {
+
+						reject();
+
+					} else {
+
+						source.sort = checkSortbyArticle(sortbyArticle)
+
+						sails.log(source.sort)
+					}
 
 					if (source.sort) {
 
 						resolve(source.sort)
+
 					} else {
+
 						reject();
 					}
 
@@ -64,6 +75,7 @@ var DownloadArticleService = {
 			sails.log('error')
 		})
 
+	// if source and sortBy successfully loaded
 		promise.then(function(val) {
 
 			const articleUrl = 'https://newsapi.org/v1/articles';
