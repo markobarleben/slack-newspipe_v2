@@ -50,6 +50,8 @@ var ArticleService = {
 			}
 		}
 
+		if (!alternativeSource || !alternativeSource.length) { alternativeSource.push(source[1]) }
+
 		var randomSource = alternativeSource[Math.floor(alternativeSource.length * Math.random())]
 
 		// build message for user
@@ -58,13 +60,13 @@ var ArticleService = {
 			response_type: "ephemeral",
 
 			attachments: [{
-					fallback: 'no logo loaded',
+					fallback: 'logo',
 					image_url: articleQuery.urlToLogo,
 					color: '#f9f9f9'
 
 				}, {
 					replace_original: true,
-					fallback: "Message is coming soon",
+					fallback: "Message",
 					color: '#f9f9f9',
 					title: articleQuery.title,
 					title_link: articleQuery.url,
