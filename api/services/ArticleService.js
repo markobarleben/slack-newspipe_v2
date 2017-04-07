@@ -73,6 +73,9 @@ var ArticleService = {
 					text: articleQuery.description,
 					image_url: articleQuery.urlToImage,
 					callback_id: "next_article",
+				}, {
+					fallback: "Button Action",
+					color: '#f9f9f9',
 					actions: [{
 						name: "next_article",
 						text: "NEXT ARTICLE",
