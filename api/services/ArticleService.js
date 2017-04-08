@@ -60,8 +60,6 @@ var ArticleService = {
 		// build message for user
 		var articleForUser = {
 
-			response_type: "ephemeral",
-
 			attachments: [{
 					fallback: 'logo',
 					image_url: articleQuery.urlToLogo,
@@ -132,16 +130,11 @@ var ArticleService = {
 					title_link: articleToShareInChannel.url,
 					text: articleToShareInChannel.description,
 					image_url: articleToShareInChannel.urlToImage,
+					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
 				}
-			],
-
-			footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
-
-
+			]
 		}
 
-
-		sails.log(shareMessage)
 		return shareMessage;
 
 	}
