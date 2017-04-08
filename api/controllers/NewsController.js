@@ -95,13 +95,27 @@ module.exports = {
 
 		counter++;
 
-		var valueNextButton = req.body.payload
-		valueNextButton = JSON.parse(valueNextButton)
+		var payload_button = req.body.payload
+		payload_button = JSON.parse(payload_button)
 
-		var articleNameNextButton = valueNextButton.actions.shift().value
+		sals.log(payload_button)
+		
+		// share article in current channel 
+		if (payload_button.actions.shift().name === 'share_article') {
+
+			var share_article = payload_button.actions.shift().value
+
+				var article_to_share = ArticleService.shareMessageInChannel({
+					share_article: share_article
+				})
+
+				return res.ok(article_to_share)
+		}
+
+		var next_article = payload_button.actions.shift().value
 
 		DownloadArticleService.download({
-			articleSource: articleNameNextButton
+			articleSource: next_article
 		}, function(articles, error) {
 
 			if (articles ==='error') {
@@ -122,7 +136,7 @@ module.exports = {
 				var articleQuery = ArticleService.articleQuery({
 					articles: responseArticle,
 					sources: responseSource,
-					sourceName: articleNameNextButton,
+					sourceName: next_article,
 					counter: counter
 				})
 
@@ -134,7 +148,7 @@ module.exports = {
 			if (articleQuery) {
 
 				var article = ArticleService.buildArticleMessageForSlack({
-					articleSource: articleNameNextButton,
+					articleSource: next_article,
 					articleQuery: articleQuery,
 					responseSource: responseSource
 				})

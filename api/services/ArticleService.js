@@ -1,5 +1,3 @@
-
-
 var ArticleService = {
 
 	//extract news from respone json after user news request
@@ -31,6 +29,7 @@ var ArticleService = {
 					}
 				}
 			}
+
 			return article
 
 		}
@@ -50,7 +49,9 @@ var ArticleService = {
 			}
 		}
 
-		if (!alternativeSource || !alternativeSource.length) { alternativeSource.push(source[1]) }
+		if (!alternativeSource || !alternativeSource.length) {
+			alternativeSource.push(source[0])
+		}
 
 		var randomSource = alternativeSource[Math.floor(alternativeSource.length * Math.random())]
 
@@ -88,6 +89,11 @@ var ArticleService = {
 						type: "button",
 						value: randomSource.id,
 						style: 'primary'
+					}, {
+						name: 'share_article',
+						text: 'SHARE',
+						type: 'button',
+						value: articleQuery
 					}],
 
 					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
@@ -99,9 +105,45 @@ var ArticleService = {
 
 		return articleForUser
 
+	},
+
+	shareMessageInChannel: function(options) {
+
+		var articleToShareInChannel = options.share_article
+
+
+		// share message in channel
+		var shareMessage = {
+
+			response_type: 'in_channel',
+			replace_original: true,
+
+			attachments: [{
+					fallback: 'logo',
+					image_url: articleToShareInChannel.urlToLogo,
+					color: '#f9f9f9'
+				}, {
+					replace_original: true,
+					fallback: "Message",
+					color: '#f9f9f9',
+					title: articleToShareInChannel.title,
+					title_link: articleToShareInChannel.url,
+					text: articleToShareInChannel.description,
+					image_url: articleToShareInChannel.urlToImage,
+				}
+
+				footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
+
+			]
+
+		}
+
+
+		sails.log(shareMessage)
+		return shareMessage;
+
 	}
 
 };
 
 module.exports = ArticleService;
-
