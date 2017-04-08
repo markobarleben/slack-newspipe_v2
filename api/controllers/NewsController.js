@@ -105,6 +105,8 @@ module.exports = {
 
 			var share_article = payload_button.actions.shift().value
 
+				share_article = JSON.parse(share_article)
+
 			sails.log(share_article)
 
 				var article_to_share = ArticleService.shareMessageInChannel({
