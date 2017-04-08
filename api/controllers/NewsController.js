@@ -98,8 +98,6 @@ module.exports = {
 		var payload_button = req.body.payload
 		payload_button = JSON.parse(payload_button)
 
-		sails.log(payload_button)
-
 		// share article in current channel 
 		if (payload_button.actions[0].name === 'share_article') {
 

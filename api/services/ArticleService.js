@@ -60,7 +60,7 @@ var ArticleService = {
 		// build message for user
 		var articleForUser = {
 
-			response_type: 'in_channel',
+			response_type: 'ephemeral',
 
 			attachments: [{
 					fallback: 'logo',
@@ -91,11 +91,6 @@ var ArticleService = {
 						type: "button",
 						value: randomSource.id,
 						style: 'primary'
-					}, {
-						name: 'share_article',
-						text: 'SHARE',
-						type: 'button',
-						value: share_article_string_value
 					}],
 
 					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
@@ -108,6 +103,14 @@ var ArticleService = {
 		return articleForUser
 
 	},
+
+
+	/* {
+						name: 'share_article',
+						text: 'SHARE',
+						type: 'button',
+						value: share_article_string_value
+	}*/
 
 	shareMessageInChannel: function(options) {
 
