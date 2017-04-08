@@ -119,6 +119,7 @@ var ArticleService = {
 			replace_original: true,
 
 			attachments: [{
+					response_type: 'in_channel',
 					fallback: 'logo',
 					image_url: articleToShareInChannel.urlToLogo,
 					color: '#f9f9f9'
