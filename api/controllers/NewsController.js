@@ -101,7 +101,7 @@ module.exports = {
 		sails.log(payload_button)
 
 		// share article in current channel 
-		if (payload_button.actions.shift().name === 'share_article') {
+		if (payload_button.actions[0].name === 'share_article') {
 
 			var share_article = payload_button.actions.shift().value
 
