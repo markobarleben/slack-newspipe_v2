@@ -60,6 +60,8 @@ var ArticleService = {
 		// build message for user
 		var articleForUser = {
 
+			response_type: 'in_channel',
+
 			attachments: [{
 					fallback: 'logo',
 					image_url: articleQuery.urlToLogo,
