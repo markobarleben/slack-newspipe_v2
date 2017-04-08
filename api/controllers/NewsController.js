@@ -98,12 +98,14 @@ module.exports = {
 		var payload_button = req.body.payload
 		payload_button = JSON.parse(payload_button)
 
-		sals.log(payload_button)
-		
+		sails.log(payload_button)
+
 		// share article in current channel 
 		if (payload_button.actions.shift().name === 'share_article') {
 
 			var share_article = payload_button.actions.shift().value
+
+			sails.log(share_article)
 
 				var article_to_share = ArticleService.shareMessageInChannel({
 					share_article: share_article
