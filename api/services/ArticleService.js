@@ -41,6 +41,8 @@ var ArticleService = {
 		var articleQuery = options.articleQuery
 		var source = options.responseSource
 
+		var share_article_string_value = JSON.stringify(articleQuery)
+
 		var alternativeSource = []
 
 		for (var i = 0; i < source.length; i++) {
@@ -93,7 +95,7 @@ var ArticleService = {
 						name: 'share_article',
 						text: 'SHARE',
 						type: 'button',
-						value: articleQuery
+						value: share_article_string_value
 					}],
 
 					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
