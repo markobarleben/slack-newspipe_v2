@@ -53,8 +53,6 @@ var DownloadArticleService = {
 					} else {
 
 						source.sort = checkSortbyArticle(sortbyArticle)
-
-						sails.log(source.sort)
 					}
 
 					if (source.sort) {
@@ -67,15 +65,16 @@ var DownloadArticleService = {
 					}
 
 				} else {
+
 					reject()
 				}
 
 			})
 		}).catch(function(err) {
-			sails.log('error')
+			sails.log.error('error')
 		})
 
-	// if source and sortBy successfully loaded
+	// if source and sortBy "top / latest" successfully loaded
 		promise.then(function(val) {
 
 			const articleUrl = 'https://newsapi.org/v1/articles';
@@ -115,45 +114,3 @@ var DownloadArticleService = {
 };
 
 module.exports = DownloadArticleService;
-
-
-/*
-		var articleRequest = request({
-			json: true,
-			method: 'GET',
-			url: articleUrl,
-			qs: {
-				apiKey: '921b772763c34336addecdaf801b1d90',
-				source: requestString
-			}
-		});
-
-		var sourceRequest = request({
-			json: true,
-			method: 'GET',
-			url: sourceUrl,
-			qs: {
-				apiKey: '921b772763c34336addecdaf801b1d90'
-			}
-		});
-
-		Promise.all([
-				articleRequest,
-				sourceRequest
-			])
-			.then(function(articleAndSourceResponse) {
-				var responseArray = [];
-				var articleResponse = articleAndSourceResponse[0].articles;
-				var sourceResponse = articleAndSourceResponse[1].sources;
-
-				responseArray.push(articleResponse)
-				responseArray.push(sourceResponse)
-
-				callback(responseArray);
-			})
-			.catch(function(err) {
-
-				callback('error')
-			});
-
-*/

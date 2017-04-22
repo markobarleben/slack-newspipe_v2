@@ -6,18 +6,18 @@
  */
 
 var request = require('request');
-var slack_config = sails.config.slack;
+let slack_config = sails.config.slack;
 
 module.exports = {
 
 	auth: function(req, res) {
 
-		var SlackclientId = slack_config.clientId;
-		var SlackclientSecret = slack_config.clientSecret;
+		let SlackClientId = slack_config.clientId;
+		let SlackClientSecret = slack_config.clientSecret;
 		var qs = {
 			code: req.query.code,
-			client_id: SlackclientId,
-			client_secret: SlackclientSecret
+			client_id: SlackClientId,
+			client_secret: SlackClientSecret
 		}
 
 		if (!req.query.code) {
@@ -40,15 +40,55 @@ module.exports = {
 				}, function(error, response, body) {
 					if (!error && response.statusCode == 200) {
 						if (JSON.parse(body).error == 'missing_scope') {
-
 							res.send('newspipe has been added to your team! THANK U!!!! ');
 						} else {
-
 							res.send('slack-newspipe is already added by your team! THANK YOU _ U ARE AWESOME!!!!!!')
-							//rejected by slack team  -> After the app is installed, could you direct users to a page that indicates installation was successful rather than to their Slack team?
-							//let team = JSON.parse(body).team.domain;
-							//res.redirect('http://' + team + '.slack.com');
+								
 						}
+					}
+				})
+			}
+		})
+	},
+
+	user_auth: function(req, res) {
+
+		let SlackClientId = slack_config.clientId;
+		let SlackClientSecret = slack_config.clientSecret;
+		var qs = {
+			code: req.query.code,
+			client_id: SlackClientId,
+			client_secret: SlackClientSecret,
+			redirect_uri: 'https://4ff93375.ngrok.io/user_auth'
+		}
+
+		if (!req.query.code) {
+			res.redirect('https://github.com/markobarleben/slack-newspipe/blob/master/README.md');
+			return;
+		}
+
+		request.get({
+			url: 'https://slack.com/api/oauth.access',
+			qs
+		}, function(err, response, body) {
+
+			if (err) return sails.log.error(err);
+
+			if (!err && response.statusCode == 200) {
+				let token = JSON.parse(body).access_token
+				let user = JSON.parse(body).user_id
+				let team = JSON.parse(body).team_id
+
+				Newspipe.createUser({
+					user_id: user,
+					team_id: team,
+					oauth_token: token
+				}, function(err, user) {
+
+					if (err) return res.send('Ohhhh User , we have a problem“ 1. We have already your permission. Thank you! Go back and Post your message! 2. Our DB is down ):');
+
+					if (user) {
+						res.send('Thank you for your permission to post as you into Slack! Please go back to your favorit channel and post your article');
 					}
 				})
 			}

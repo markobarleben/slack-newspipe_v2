@@ -23,7 +23,12 @@ var ArticleService = {
 
 					if (options.sourceName === sourceSendToUser[z].id) {
 						article.id = sourceSendToUser[z].id
-						article.urlToLogo = sourceSendToUser[z].urlsToLogos.small
+
+						if (!sourceSendToUser[z].urlsToLogos.small) {
+							article.urlToLogo = article.id
+						} else {
+							article.urlToLogo = sourceSendToUser[z].urlsToLogos.small
+						}
 						article.category = sourceSendToUser[z].category
 						article.language = sourceSendToUser[z].language
 					}
@@ -31,9 +36,7 @@ var ArticleService = {
 			}
 
 			return article
-
 		}
-
 	},
 
 	buildArticleMessageForSlack: function(options) {
@@ -41,7 +44,7 @@ var ArticleService = {
 		var articleQuery = options.articleQuery
 		var source = options.responseSource
 
-		var share_article_string_value = JSON.stringify(articleQuery)
+		var articleQuery_string_value = JSON.stringify(articleQuery)
 
 		var alternativeSource = []
 
@@ -65,6 +68,7 @@ var ArticleService = {
 			attachments: [{
 					fallback: 'logo',
 					image_url: articleQuery.urlToLogo,
+					text: ':point_right: ' + articleQuery.urlToLogo.toUpperCase() + ' :point_left:',
 					color: '#f9f9f9'
 
 				}, {
@@ -91,6 +95,12 @@ var ArticleService = {
 						type: "button",
 						value: randomSource.id,
 						style: 'primary'
+					}, {
+						name: "post_article",
+						text: "POST ARTICLE",
+						type: "button",
+						value: articleQuery_string_value
+
 					}],
 
 					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
@@ -105,44 +115,29 @@ var ArticleService = {
 	},
 
 
-	/* {
-						name: 'share_article',
-						text: 'SHARE',
-						type: 'button',
-						value: share_article_string_value
-	}*/
 
-	shareMessageInChannel: function(options) {
+	postMessageInChannel: function(options) {
 
-		var articleToShareInChannel = options.share_article
+		var articleToShareInChannel = options.post_article
 
 
 		// share message in channel
-		var shareMessage = {
-
-			response_type: 'in_channel',
+		var attachments = [{
 			replace_original: true,
+			fallback: "Message",
+			color: '#f9f9f9',
+			title: articleToShareInChannel.title,
+			title_link: articleToShareInChannel.url,
+			text: articleToShareInChannel.description,
+			image_url: articleToShareInChannel.urlToImage
+		}, {
+			replace_original: true,
+			fallback: 'footer',
+			color: '#f9f9f9',
+			footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>'
+		}]
 
-			attachments: [{
-					response_type: 'in_channel',
-					fallback: 'logo',
-					image_url: articleToShareInChannel.urlToLogo,
-					color: '#f9f9f9'
-				}, {
-					replace_original: true,
-					fallback: "Message",
-					color: '#f9f9f9',
-					title: articleToShareInChannel.title,
-					title_link: articleToShareInChannel.url,
-					text: articleToShareInChannel.description,
-					image_url: articleToShareInChannel.urlToImage,
-					footer: 'powered by www.NewsAPI.org and send with  ' + ':heart:' + '  from <https://github.com/markobarleben/slack-newspipe/blob/master/README.md|slack-newspipe>',
-				}
-			]
-		}
-
-		return shareMessage;
-
+		return attachments = JSON.stringify(attachments);
 	}
 
 };

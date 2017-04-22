@@ -2,7 +2,8 @@
 
 module.exports.routes = {
 
-  '/newsRequest' : 'NewsController.newsRequest',
+  '/newsRequest' : 'NewspipeController.newsRequest',
   '/auth' : 'AuthController.auth',
-  '/buttonAction': 'NewsController.buttonAction'
+  '/buttonAction': 'NewspipeController.buttonAction',
+  '/user_auth':'AuthController.user_auth'
 };
