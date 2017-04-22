@@ -50,7 +50,6 @@ This is your place :raised_hands:
 
 Write me a mail  :point_right: __marko@hyph.me__ :point_left: and we put some informations about your team at this place :smiley:
 
-## Credit
 
 
 
