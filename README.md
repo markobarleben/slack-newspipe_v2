@@ -24,7 +24,7 @@ __slack-newspipe will add a slash command to your team.__ We do not store any in
 __If you want to use :point_right: POST ARTICLE :point_left:__
 
 * We need your __permission__ to post messages as you into slack.
-* We store some informations about you __[user id && team id && oauth token]__ 
+* We store some informations about you :bangbang: user id && team id && oauth token :bangbang:
 
 ## About
 
