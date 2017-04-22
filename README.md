@@ -24,7 +24,7 @@ __slack-newspipe will add a slash command to your team.__ We do not store any in
 __If you want to use :point_right: POST ARTICLE :point_left:__
 
 * We need your __permission__ to post messages as you into slack.
-* We store some informations about you :bangbang: user id && team id && oauth token :bangbang:
+* We store some information about you :bangbang: user id && team id && oauth token :bangbang:
 
 ## About
 
@@ -43,12 +43,12 @@ When you clone this repo and run on your own server, heroku, aws etc. you need:
 * A Slack developer account
 * An API key from NewsAPI.org
 
-More informations comming soon!! 
+More information comming soon!! 
 
 ## Teams that already use slack-newspipe_v2
 This is your place :raised_hands:
 
-Write me a mail  :point_right: __marko@hyph.me__ :point_left: and we put some informations about your team at this place :smiley:
+Write me a mail  :point_right: __marko@hyph.me__ :point_left: and we put some information about your team at this place :smiley:
 
 
 
