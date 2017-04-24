@@ -20,7 +20,8 @@ __If you press the Button :point_right: POST ARTICLE :point_left: It is now poss
 
 ## Privacy policy
 
-__slack-newspipe will add a slash command to your team.__ We do not store any information about the Slack teams that use this app. We only respond to the request for `/newspipe`.
+__Basically slack-newspipe_v2 will only add a slash command to your team.__ We do not store any information about the Slack teams that use this app. We only respond to the request for `/newspipe`. 
+
 __If you want to use :point_right: POST ARTICLE :point_left:__
 
 * We need your __permission__ to post messages as you into slack.
