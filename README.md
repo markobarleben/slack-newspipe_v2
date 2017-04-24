@@ -6,7 +6,7 @@ Wanna quickly look up a definition of slack-newspipe on Slack? Just type `/newsp
 
 ## Install slack-newspipe_v2 on Slack
 
-Authenticate from this button! Coming Soon!!! 
+Authenticate from this button!
 
 [![Login with Slack](https://platform.slack-edge.com/img/add_to_slack@2x.png)](https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=93998371840.165936093297)
 
