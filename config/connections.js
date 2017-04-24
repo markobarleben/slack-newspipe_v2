@@ -75,15 +75,12 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
-   newsPipe_user_token_server: {
+   herokuPG: {
     adapter: 'sails-postgresql',
-    host: 'localhost',
+    url: process.env.DATABASE_URL,
     port: 5432,
-    user: 'postgres', // optional
-    password: '', // optional
-    database: 'user_oauth_token' //optional
+    ssl: true
   },
-
 
 
   /***************************************************************************
