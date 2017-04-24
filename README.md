@@ -16,7 +16,7 @@ slack-newspipe is a [SailsJS](http://sailsjs.com) app that display news from aro
 ## How it works
 
 After installing newspipe you can use  the `/newspipe ` slash command anywhere in your team to read news. We display all news declared `only visible to you` so only you can read this message. For Example type `/newspipe engadget` so we show you the latest news from https://www.engadget.com 
-__It is now possible to share interesting news with your team members!__ 
+__If you press the Button :point_right: POST ARTICLE :point_left: It is now possible to share interesting news with your team members! All what we need is your permission to post this article as you into Slack in the channel where you are right now__ 
 
 ## Privacy policy
 
