@@ -101,7 +101,7 @@ module.exports = {
 		button_payload = JSON.parse(button_payload)
 
 		var ask_for_permission = {
-			text: 'Please give us your ' + '<https://slack.com/oauth/authorize?&client_id=' + SlackclientId + '&redirect_uri= YOUR_REDIRECT_URI' +
+			text: 'Please give us your ' + '<https://slack.com/oauth/authorize?&client_id=' + SlackclientId + '&redirect_uri='+ process.env.REDIRECT_URI +
 				'&team=' + button_payload.team.id + '&scope=chat:write:user| PERMISSION>' + ' to post as you into Slack'
 		}
 
