@@ -1,8 +1,8 @@
 {
-  "name": "newsPipe",
+  "name": "slack-newspipe_v2",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
+  "version": "2.0.0",
+  "description": "Read and share News in Slack",
   "keywords": [],
   "dependencies": {
     "async": "^2.1.4",
@@ -28,6 +28,9 @@
     "sails-postgresql": "^0.11.4",
     "uuid": "^3.0.1"
   },
+  "engines": {
+    "node": "6.10.0"
+  },
   "scripts": {
     "debug": "node debug app.js",
     "start": "sails lift"
@@ -35,7 +38,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/markobarleben/newsPipe.git"
+    "url": "git://github.com/markobarleben/slack-newspipe_v2.git"
   },
   "author": "markobarleben",
   "license": "MIT"
