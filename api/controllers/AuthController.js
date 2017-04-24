@@ -59,7 +59,7 @@ module.exports = {
 			code: req.query.code,
 			client_id: SlackClientId,
 			client_secret: SlackClientSecret,
-			redirect_uri: 'https://4ff93375.ngrok.io/user_auth'
+			redirect_uri: process.env.REDIRECT_URI
 		}
 
 		if (!req.query.code) {
