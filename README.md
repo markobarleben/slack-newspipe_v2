@@ -8,7 +8,7 @@ Wanna quickly look up a definition of slack-newspipe on Slack? Just type `/newsp
 
 Authenticate from this button! Coming Soon!!! 
 
-[![Login with Slack](https://platform.slack-edge.com/img/add_to_slack@2x.png)](https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=93998371840.117056367719)
+[![Login with Slack](https://platform.slack-edge.com/img/add_to_slack@2x.png)](https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=93998371840.165936093297)
 
 ## About slack-newspipe_v2
 slack-newspipe is a [SailsJS](http://sailsjs.com) app that display news from around the world in slack. Furthermore it is now possible to share news in [Slack](https://slack.com). All news are provided from [NewsAPI.org](https://newsapi.org) 
