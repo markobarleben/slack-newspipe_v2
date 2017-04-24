@@ -33,7 +33,7 @@ slack-newspipe_v2 was written and is maintained by Marko Barleben.
 
 ## Contact
 
-For any questions, comments, or concerns about slack-newspipe you can contact me __marko@hyph.me__
+For any questions, comments, or concerns about slack-newspipe_v2 you can contact me __marko@hyph.me__
 
 [![Twitter_follow](https://img.shields.io/twitter/url/https/twitter.com/fold_left.svg?style=social&label)](https://twitter.com/mabarleb)
 
