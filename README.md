@@ -4,6 +4,8 @@
 
 Wanna quickly look up a definition of slack-newspipe on Slack? Just type `/newspipe help` slash command! Newspipe bot responds you with a short description. 
 
+![slack-newspipe](https://github.com/markobarleben/slack-newspipe/blob/master/assets/hallo.gif)
+
 ## Install slack-newspipe_v2 on Slack
 
 Authenticate from this button!
