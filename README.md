@@ -46,7 +46,7 @@ When you clone this repo and run on your own server, heroku, aws etc. you need:
 * A Slack developer account
 * An API key from NewsAPI.org
 
-More information comming soon!! 
+More information coming soon!! 
 
 ## Teams that already use slack-newspipe_v2
 This is your place :raised_hands:
