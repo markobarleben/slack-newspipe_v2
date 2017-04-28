@@ -148,7 +148,7 @@ module.exports = {
 				}
 			})
 
-		} else {
+		} else { // if the button payload not 'post_article' 
 
 			var next_article = button_payload.actions.shift().value
 
@@ -193,6 +193,5 @@ module.exports = {
 				return res.ok(article)
 			})
 		}
-
 	}
 };
